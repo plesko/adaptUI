@@ -1,0 +1,575 @@
+<script>
+$(document).ready(function(){
+
+	$("#page-title").text("Dashboard")
+	$("#page-sub-title").text("Overview & Stats")
+
+	var interpolation = "monotone",
+			margin = {"top": 20, "right": 40, "bottom": 20, "left": 30},
+			width = $("#activityChart").width()-margin.left-margin.right,
+			height = $("#activityChart").height()-margin.top-margin.bottom
+			n = 60 // total intervals to show: 60 seconds 
+      timeOffset = 10;
+	
+	// Parse the date and time
+	var timeFormat = d3.time.format("%H:%M:%S");
+
+	// Set the ranges
+	var xScale = d3.time.scale()
+    .range([0, width]);
+	var yScale = d3.scale.linear().range([height, 0]);
+
+	// Define the axes
+	var xAxis = d3.svg.axis().scale(xScale)
+    .orient("bottom")
+    .ticks(10)
+
+	var yAxis = d3.svg.axis().scale(yScale)
+    .orient("right");
+
+	// Define the notification line
+	var createNotifLine = d3.svg.line()
+    .interpolate(interpolation)
+    .x(function(d) { return xScale(new Date(d.unixDate*1000)); })
+    .y(function(d) { return yScale(d.notifCnt); })
+
+	// Define the notification area
+	var createNotifArea = d3.svg.area()
+    .interpolate(interpolation)
+    .x(function(d) { return xScale(new Date(d.unixDate*1000)); })
+    .y0(height)
+    .y1(function(d) { return yScale(d.notifCnt); })
+
+	// Define the alarm line
+	var createAlarmLine = d3.svg.line()
+    .interpolate(interpolation)
+    .x(function(d) { return xScale(new Date(d.unixDate*1000)); })
+    .y(function(d) { return yScale(d.alarms.alarmCnt); })
+
+	// Define the alarm area
+	var createAlarmArea = d3.svg.area()
+    .interpolate(interpolation)
+    .x(function(d) { return xScale(new Date(d.unixDate*1000)); })
+    .y0(height)
+    .y1(function(d) { return yScale(d.alarms.alarmCnt); })
+
+	// Adds the svg canvas
+	var svg = d3.select("#activityChart")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", 
+            "translate(" + margin.left + "," + margin.top + ")")
+
+  // Add Clipping Path
+  var clip = svg.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height);
+
+  // Make group for notifications
+  var notifications = svg.append("g")
+  	.attr("class", "notifs")
+  	.attr("clip-path", "url(#clip)");
+
+  // Make group for alarms
+  var alarms = svg.append("g")
+  	.attr("class", "alarms")
+  	.attr("clip-path", "url(#clip)");
+
+  var loadData = $.getJSON(<?= $mainActivityData ?>, function(data){
+		
+	});
+  
+	loadData.done(function(data) {
+    myData = data.data
+    console.log(myData)
+
+    var min = d3.min(myData, function(d) { return new Date(d.unixDate*1000); })
+    var max = d3.max(myData, function(d) { return new Date((d.unixDate-2)*1000); })
+    var maxD = d3.max(myData, function(d) { return d.date })
+
+    console.log(max)
+
+		xScale.domain([moment(max).subtract(180, 'seconds'), moment(max).subtract(120, 'seconds')]).nice();
+		yScale.domain([0, d3.max(myData, function(d) { return d.notifCnt; })+1])
+
+    // Add the X Axis
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    // Add the Y Axis
+    svg.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis);
+
+    // Add the notification Line.
+    var notifLine = notifications
+      .append("path")
+        .datum(myData)
+        .attr("class", "notifLine")
+        .attr("stroke", "rgba(237,202,36,1)")
+        .attr("stroke-width", 2)
+        .attr("fill", "none")
+        .attr("d", createNotifLine(myData));
+
+	  // Add the notification Area.
+    var notifArea = notifications
+      .append("path")
+        .data(myData)
+        .attr("class", "notifArea")
+        .attr("fill", "rgba(237,202,36,.5)")
+        .attr("d", createNotifArea(myData));
+
+    // Add the alarm Line.
+    var alarmLine = alarms
+      .append("path")
+        .data(myData)
+        .attr("class", "alarmLine")
+        .attr("stroke", "rgba(215,55,57,1)")
+        .attr("stroke-width", 2)
+        .attr("fill", "none")
+        .attr("d", createAlarmLine(myData));
+
+    // Add the alarm Area.
+    var alarmArea = alarms
+      .append("path")
+        .data(myData)
+        .attr("class", "alarmArea")
+        .attr("fill", "rgba(215,55,57,.5)")
+        .attr("d", createAlarmArea(myData));
+
+    var alarmPoints = alarms
+      .selectAll("circle").data(myData);
+
+    alarmPoints.enter()
+			.append("alarms:circle")
+			.attr("class", "alarmPoints")
+			.attr("r", function(d) { return 7*d.alarms.highestThreat }) // Change to Threat Score
+			.attr("cx", function(d) { return xScale(new Date(d.unixDate*1000)) })
+			.attr("cy", function(d) { return yScale(d.alarms.alarmCnt) })
+			.style("fill", "rgba(255,255,255,.75)")
+			.style("stroke", "rgba(215,55,57,1)")
+			.style("stroke-width", "2")
+			.style("cursor", "pointer")
+			.on('click', function(d){
+        d3.event.stopPropagation();
+        var idx = []
+				var alarms = d.alarms.alarm; 
+				for (var k = 0; k < alarms.length; k++) {
+          idx.push(alarms[k].idx)
+        }
+				var idxs = idx.join("_")
+        console.log(idxs)
+        $.ajax({
+      		url: 'vIntervalDetails.php',
+      		dataType: 'html',
+      		data: {idx: idxs}
+      	})
+      	.success(function(data) {
+      		$('#ajax-content').html(data);
+      	});
+	    });
+
+    alarmPoints.exit()
+			.remove()
+
+		var textPoints = alarms
+    .selectAll("text")
+			.data(myData)
+			.enter()
+			.append("text");
+
+		var textLabels = textPoints
+			.attr("x", function(d) { return xScale(new Date(d.unixDate*1000)) })
+			.attr("y", function(d) { return yScale(d.alarms.alarmCnt)+5; })
+			.text( function (d) { 
+				if(d.alarms.alarmCnt !== 0){
+					return d.alarms.alarmCnt;
+				}
+			})
+			.attr("text-anchor", "middle")
+			.attr("class", "textPoints")
+			.attr("fill", "rgba(215,55,57,1)")
+			.style("cursor", "pointer")
+			.on('click', function(d){
+        d3.event.stopPropagation();
+        var idx = []
+				var alarms = d.alarms.alarm; 
+				for (var k = 0; k < alarms.length; k++) {
+          idx.push(alarms[k].idx)
+        }
+				var idxs = idx.join('_')
+        console.log(idxs)
+        $.ajax({
+      		url: 'vIntervalDetails.php',
+      		dataType: 'html',
+      		data: {idx: idxs}
+      	})
+      	.success(function(data) {
+      		$('#ajax-content').html(data);
+      	});
+	    });
+
+    tick()
+    
+    function tick() {
+      
+      var getNewInterval = $.getJSON(<?= $mainActivityData ?>, function(data){ });
+
+      getNewInterval.done(function(data) {
+        // console.log(myData)
+        // console.log(data)
+
+        // // redraw the line, and slide it to the left
+        // notifArea
+        //   .attr("d", createNotifArea(data))
+        // .transition()
+        //   .duration(500)
+        //   .ease("linear")
+        //   .attr("transform", "translate(" + xScale(-4) + ",0)")
+        //   // .each("end", tick);
+
+        // // redraw the line, and slide it to the left
+        // alarmLine
+        //   .attr("d", createAlarmLine(data))
+        // .transition()
+        //   .duration(500)
+        //   .ease("linear")
+        //   .attr("transform", "translate(" + xScale(-4) + ",0)")
+        //   // .each("end", tick);
+
+        // // redraw the line, and slide it to the left
+        // alarmArea
+        //   .attr("d", createAlarmArea(data))
+        // .transition()
+        //   .duration(500)
+        //   .ease("linear")
+        //   .attr("transform", "translate(" + xScale(-4) + ",0)")
+        //   // .each("end", tick);
+
+        // // Add the notification Area.
+        // notifications.append("path")
+        //   .attr("class", "notifArea")
+        //   .attr("fill", "rgba(237,202,36,.5)")
+        //   .attr("d", notifArea(myData));
+
+        // // Add the alarm Line.
+        // alarms.append("path")
+        //   .attr("class", "alarmLine")
+        //   .attr("stroke", "rgba(215,55,57,1)")
+        //   .attr("stroke-width", 2)
+        //   .attr("fill", "none")
+        //   .attr("d", alarmLine(myData));
+
+        // // Add the alarm Area.
+        // alarms.append("path")
+        //   .attr("class", "alarmArea")
+        //   .attr("fill", "rgba(215,55,57,.5)")
+        //   .attr("d", alarmArea(myData));
+
+        // pop the old data point off the front
+        myData.shift();
+        // $.each(myData, function(i, v) {
+        //    console.log(v.date+" Notifs: "+v.notifCnt+"\nAlarms: "+v.alarms.alarmCnt)
+        // });
+        // inter = window.setInterval(tick(), 1000);
+      })
+    }
+    $('.row').addClass('fadeInUp').addClass('animated')
+	});
+
+/*
+  var doTables = function() {
+    $.getJSON(<?= $allTableData ?>, function(data){
+        createRecentNotifTable(data.data.recentNotifs);
+        createFreqNotifTable(data.data.freqNotifs);
+        createRecentAlarmTable(data.data.recentAlarms);
+        createFreqAlarmTable(data.data.freqAlarms);
+        createHostTable(data.data.hosts);
+	})
+  }();
+*/  
+  //Load recent and freq notification info on page load
+  var recentNotifTable = function() { 
+    $.getJSON(<?= $recentNotifData ?>, function(data){
+      createRecentNotifTable(data.data)
+    })
+  }
+  recentNotifTable();
+
+  var freqNotifTable = function() { 
+    $.getJSON(<?= $freqNotifData ?>, function(data){
+      createFreqNotifTable(data.data)
+    })
+  }
+  freqNotifTable();
+  
+/*
+  var recentAlarmTable = function() { 
+    $.getJSON(<?= $recentAlarmData ?>, function(data){
+      createRecentAlarmTable(data.data)
+    })
+  }
+
+  var freqAlarmTable = function() { 
+    $.getJSON(<?= $freqAlarmData ?>, function(data){
+      console.log(data.data)
+      createFreqAlarmTable(data.data)
+    })
+  }
+
+  var hostTable = function() { 
+    $.getJSON(<?= $hostData ?>, function(data){
+      console.log("Host data: ");
+      console.log(data.data);
+      createHostTable(data.data)
+    })
+  }
+*/
+  var loadedAlarms = false;
+  var loadedHosts = false;
+
+  //Load alarms panel data (only once) when user clicks on the alarms tab
+  $("#alarmsPanel").on("click", function(event) { 
+	if (loadedAlarms == false) {
+		$.getJSON(<?= $recentAlarmData ?>, function(data){
+			createRecentAlarmTable(data.data);
+			$.getJSON(<?= $freqAlarmData ?>, function(data){
+				createFreqAlarmTable(data.data);
+				loadedAlarms = true;
+			});
+		});
+	}  
+  });
+  
+  //Load hosts panel (only once) when user clicks on the hosts tab
+  $("#hostsPanel").on("click", function(event) {
+	if (loadedHosts == false) {
+		$.getJSON(<?= $hostData ?>, function(data) {
+			createHostTable(data.data);
+			loadedHosts = true;
+		});
+	}  
+  });
+  
+  function createRecentAlarmTable(intervalAlarmData) {
+    $('#recentAlarmTable')
+      .dataTable({
+        data: intervalAlarmData,
+        searching: false,
+        paging: true,
+        processing: true,
+        order: [[5, "desc"]],
+        info: false,
+        columns: [
+          { title: "Alarm Type",
+            data: "type" },
+          { title: "Severity",
+              data: "severity"},
+          { title: "Host",
+            data: "hostName" },
+          { title: "Asset Criticality",
+            data: "assetCrit"},
+          { title: "Threat Score",
+            data: "threatScore"},
+          { title: "Timestamp",
+            data: "date" }
+        ],
+        createdRow: function( row, data, dataIndex ) {
+          $(row).attr("id", data.idx);
+          $(row).css("cursor", "pointer");
+        }
+      })
+    .end()
+      .find('.dataTables_length').hide()
+    .end()
+      .appendTo('#ajax-content')
+    .end()
+    .show()
+    .addClass('animated')
+    .addClass('fadeInUp')
+  }
+
+  function createFreqAlarmTable(intervalAlarmData) {
+    $('#freqAlarmTable')
+      .dataTable({
+        data: intervalAlarmData,
+        searching: false,
+        paging: true,
+        processing: true,
+        info: false,
+        order: [ [ 4, "desc" ] ],
+        columns: [
+          { title: "Alarm Type",
+            data: "type" },
+          { title: "Alarm Description",
+            data: "desc" },
+          { title: "Associated Hosts",
+            data: "hostCnt" },
+          { title: "Total Alarms",
+            data: "alarmCnt" },
+          { title: "Timestamp",
+            data: "date" },
+          { title: "Percentage of All",
+            data: "percentage" }
+        ],
+        createdRow: function( row, data, dataIndex ) {
+          $(row).attr("id", data.idx)
+        }
+      })
+    .end()
+      .find('.dataTables_length').hide()
+    .end()
+      .appendTo('#ajax-content')
+    .end()
+    .show()
+    .addClass('animated')
+    .addClass('fadeInUp')
+  }
+
+  function createRecentNotifTable(intervalAlarmData) {
+    $('#recentNotifTable')
+      .dataTable({
+        data: intervalAlarmData,
+        searching: false,
+        paging: true,
+        processing: true,
+        info: false,
+        order: [ [ 4, "desc" ] ],
+        columns: [
+          { title: "Notification Type",
+            data: "type" },
+          { title: "Notification Description",
+            data: "desc" },
+          { title: "Source IP",
+            data: "sourceIP" },
+          { title: "Target IP",
+            data: "targetIP" },
+          { title: "Timestamp",
+            data: "date" }
+        ],
+        createdRow: function( row, data, dataIndex ) {
+          $(row).attr("id", data.idx);
+//          $(row).css("cursor", "pointer");
+        }
+      })
+    .end()
+      .find('.dataTables_length').hide()
+    .end()
+      .appendTo('#ajax-content')
+    .end()
+    .show()
+    .addClass('animated')
+    .addClass('fadeInUp')
+  }
+
+  function createFreqNotifTable(intervalAlarmData) {
+    $('#freqNotifTable')
+      .dataTable({
+        data: intervalAlarmData,
+        searching: false,
+        paging: true,
+        processing: true,
+        info: false,
+        order: [ [ 4, "desc" ] ],
+        columns: [
+          { title: "Notification Type",
+            data: "type" },
+          { title: "Notification Description",
+            data: "desc" },
+          { title: "Associated Hosts",
+            data: "hostCnt" },
+          { title: "Total Notifications",
+            data: "notifCnt" },
+          { title: "Timestamp",
+            data: "date" },
+          { title: "Percentage of All",
+            data: "percentage" }
+        ],
+        createdRow: function( row, data, dataIndex ) {
+          $(row).attr("id", data.idx)
+        }
+      })
+    .end()
+      .find('.dataTables_length').hide()
+    .end()
+      .appendTo('#ajax-content')
+    .end()
+    .show()
+    .addClass('animated')
+    .addClass('fadeInUp')
+  }
+
+  function createHostTable(hostData) {
+    $('#freqHosts')
+      .dataTable({
+        data: hostData,
+        searching: false,
+        paging: true,
+        processing: true,
+        info: false,
+        order: [ [ 4, "desc" ] ],
+        columns: [
+          { title: "Host",
+            data: "host" },
+          { title: "Asset Criticality",
+            data: "assetCrit" },
+  		  { title: "Alarm Count",
+			data: "alarmCnt" },
+	      { title: "Timestamp",
+	      	data: "date" },
+          { title: "Percentage of All",
+            data: "percentage" }
+        ],
+        createdRow: function( row, data, dataIndex ) {
+          $(row).attr("id", data.idx);
+          $(row).css("cursor", "pointer");
+        }
+      })
+    .end()
+      .find('.dataTables_length').hide()
+    .end()
+      .appendTo('#ajax-content')
+    .end()
+    .show()
+    .addClass('animated')
+    .addClass('fadeInUp')
+  }
+
+//  $('#freqHosts, #recentAlarmTable, #recentNotifTable').on( 'click', 'tbody tr', function (event) { //User clicked on a row
+  $('#freqHosts, #recentAlarmTable').on( 'click', 'tbody tr', function (event) { //User clicked on a row
+	var idx = $(this).attr("id");
+	var tableID = $(this).closest("table").attr("id"); //Get ID of closest parent table
+	var phpPage = "";
+	
+	switch (tableID) {
+		case "freqHosts":
+			phpPage = "vHostDetails";
+			break;
+		case "recentAlarmTable":
+			phpPage = "vAlarmDetails";
+			break;
+		case "recentNotifTable":
+			phpPage = "vNotifDetails";
+			break;
+		default:
+			break;
+	}
+
+	if (phpPage != "") { 
+	  //Go to desired details page
+	  var url = g_baseURI + "/view/" + phpPage + ".php?idx=" + idx;
+	  ajaxContainer = $("#ajax-content");
+	  ajaxLoader(url, ajaxContainer);
+	}
+  });
+  
+});
+
+</script>

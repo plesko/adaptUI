@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <!-- start: HEAD -->
+  <head>
+    <title>Cyber Adapt - Detect the presence of sophisticated adversaries hiding inside enterprise networks</title>
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="Detect the presence of sophisticated adversaries hiding inside enterprise networks">
+    <meta name="author" content="Cyber Adapt">
+    <!-- end: META -->
+
+    <!-- start: MAIN CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="/adaptUI/js/jquery-ui/jquery-ui.min.css"> <!--  swells: Needed right now for FDG and Geo Location and Geo Location -->
+<!--    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css"> -->
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/animate.css/animate.min.css">
+    <!-- end: MAIN CSS -->
+
+    <!-- start: CORE CSS -->
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/DataTables-1.10.7/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/css/styles.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/css/styles-responsive.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/css/plugins.css">
+    <link rel="stylesheet" href="/adaptUI/view/assets/css/themes/theme-cyberadapt.css" type="text/css" id="skin_color">
+    <link rel="stylesheet" href="/adaptUI/view/assets/css/print.css" type="text/css" media="print"/>
+    <!-- end: CORE CSS -->
+
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="/adaptUI/view/assets/plugins/nvd3/nv.d3.css">
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+
+    <script src="/adaptUI/view/assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
+
+    <!-- moved original javascript to the bottom of the page -->
+
+  </head>
+  <body class="pageload single-page">
+    <!-- start: MODAL FORM -->
+    <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <!-- Start: Host Configuration Form -->
+            <form role="form" class="form-horizontal host-config hidden toggle-content">
+              <div class="form-group">
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-name">
+                    Host Name
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="Host Name" id="host-name" class="form-control" value="">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <div class="col-sm-3 radio-label">
+                    Asset Criticality
+                  </div>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" value="1" name="asset-criticality" class="grey">
+                      1
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" value="2" name="asset-criticality" class="grey">
+                      2
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" value="3" name="asset-criticality" class="grey">
+                      3
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" value="4" name="asset-criticality" class="grey">
+                      4
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" value="5" name="asset-criticality" class="grey">
+                      5
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-type">
+                    Host Type
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="host-type" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-customfield-1">
+                    Primary User
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="host-customfield-1" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-customfield-2">
+                   Email
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="host-customfield-2" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-customfield-3">
+                   Phone
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="host-customfield-3" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="host-customfield-4">
+                   Location
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="host-customfield-4" class="form-control">
+                  </div>
+                </div>
+                
+                <div class="form-group col-sm-12 hidden">
+                  <label class="col-sm-3 control-label" for="contact-name">
+                    Contact
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="Operator1" id="contact-name" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12 hidden">
+                  <label class="col-sm-3 control-label" for="host-notes">
+                    Notes
+                  </label>
+                  <div class="col-sm-9">
+                    <textarea placeholder="" id="host-notes" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- End: Host Configuration Form -->
+            <!-- Begin: Create New Report Form -->
+            <form role="form" class="form-horizontal create-report hidden toggle-content">
+              <div class="form-group">
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="report-name">
+                    Report Name
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="report-name" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="report-notes">
+                    Notes
+                  </label>
+                  <div class="col-sm-9">
+                    <textarea placeholder="" id="report-notes" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- End: Create Report Form -->
+            <!-- Begin: Update Report Form -->
+            <form role="form" class="form-horizontal update-report hidden toggle-content">
+              <div class="form-group">
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="report-name">
+                    Report Name
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="" id="report-name" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <label class="col-sm-3 control-label" for="report-notes">
+                    Notes
+                  </label>
+                  <div class="col-sm-9">
+                    <textarea placeholder="" id="report-notes" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- End: Update Report Form -->
+            <!-- Begin: Update Report Form -->
+            <form role="form" class="form-horizontal delete-report hidden toggle-content">
+              <div class="form-group col-sm-12">
+                <p>Are you sure you wish to delete this report?</p>
+              </div>
+            </form>
+            <!-- End: Update Report Form -->
+            <!-- Begin: Geolocation Content -->
+            <div class="geolocate hidden toggle-content">
+              <p>this is where the map to the host will display</p>
+            </div>
+            <!-- End: Geolocation Content -->
+            <!-- Begin: Geolocation Content -->
+            <div class="external-data hidden toggle-content">
+              <p>External data loaded here.</p>
+            </div>
+            <!-- End: Geolocation Content -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    <div class="main-wrapper">
+      <!-- start: TOPBAR -->
+      <header class="topbar navbar navbar-inverse navbar-fixed-top inner">
+        <!-- start: TOPBAR CONTAINER -->
+        <div class="container">
+          <div class="navbar-header">
+            <a class="sb-toggle-left hidden-md hidden-lg" href="#main-navbar">
+              <i class="fa fa-bars"></i>
+            </a>
+            <!-- start: LOGO -->
+            <a class="navbar-brand" href="/adaptUI">
+              <!-- <img src="/adaptUI/view/assets/images/logo-cyberadapt.png" alt="Cyber Adapt"/> -->
+              <img src="/adaptUI/view/assets/images/logo-cyberadapt-01012016.png" alt="Cyber Adapt"/>
+            </a>
+            <!-- end: LOGO -->
+            
+            <!-- Start: Full Site Search -->
+            <div class="search hidden">
+              <i class="fa fa-search"></i><input type="text" class="form-control" name="search" value="" placeholder="Search">
+            </div>
+            <!-- End: Full Site Search -->
+            
+            <ul id="systemStatus" class="">
+              <li class="">
+                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                <span class="indicator"></span><span class="name">System Status</span>
+                </a>
+                <div class="dropdown-menu dropdown-dark" id="systemStatusDropdown">
+                <ul>
+                  <li id="csuStatus"><span class="indicator"></span><span class="name">Controller</span></li>
+                  <li id="scpStatus"><span class="indicator"></span><span class="name">Probe</span></li>
+                  <li id="acsStatus"><span class="indicator"></span><span class="name">Logic Engine</span></li>
+                </ul>
+              </div>
+              </li>
+              </ul>
+          </div>
+          <div class="topbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+              <!-- start: USER DROPDOWN -->
+              <li class="dropdown current-user">
+                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                  <img id="user-avatar" src="/adaptUI/view/assets/images/avatar-default-400px.png" class="img-circle lighterBlue-stroke" alt=""> <span class="username hidden-xs">Operator1</span> <i class="fa fa-caret-down "></i>
+                </a>
+                <ul class="dropdown-menu dropdown-dark">
+                  <li>
+                    <a href="#">
+                      My Account
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/adaptUI/controller/cLogout.php">
+                      Log Out
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- end: USER DROPDOWN -->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+          </div>
+        </div>
+        <!-- end: TOPBAR CONTAINER -->
+      </header>
+      <!-- end: TOPBAR -->
+
+      <!-- start: ACTION DROP DOWN -->
+      <div class="item-actions" id="item-actions">
+        <ul>
+          <li>
+            <a href="#" title="Back" class="back"><i class="fa fa-arrow-left"></i>Back</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" title="Add to Report" class="edit-report-toggle"><i class="fa fa-plus"></i>Add to Report</a>
+            <ul class="dropdown-menu dropdown-dark">
+              <li><a class="create-report" href="#" title="Create New Report"><i class="fa fa-plus"></i>Create New Report</a></li>
+            </ul>
+          </li>
+          <li class="hidden"><a href="#" title="Share"><i class="fa fa-paper-plane"></i>Share</a></li>
+          <li class="hidden"><a href="#" title="Configure"><i class="fa fa-cog"></i>Configure</a></li>
+          <li><a href="#" title="Mark Seen or Unseen"><i class="fa fa-eye"></i>Mark Seen/Unseen</a></li>
+          <li class="hidden"><a href="#" title="Mute benign notifications"><i class="fa fa-volume-down"></i>Mute</a></li>
+        </ul>
+        <div class="background"></div>
+      </div>
+      <!-- END: ACTION DROP DOWN -->
+
+      <!-- start: PAGESLIDE LEFT -->
+      <a class="closedbar inner hidden-sm hidden-xs" href="#">
+      </a>
+      <nav id="pageslide-left" class="pageslide inner">
+        <div class="navbar-content">
+          <!-- start: SIDEBAR -->
+          <div class="main-navigation left-wrapper transition-left">
+            <!-- start: MAIN NAVIGATION MENU -->
+            <ul class="main-navigation-menu">
+              <li class="">
+                <a href="/adaptUI/view/vDashboard.php"><i class="fa fa-dashboard fa-fw"></i> <span class="title"> Dashboard </span></a>
+              </li>
+              <!-- UPDATE: NEW INDICATORS (NUMBER IS VARIABLE), NAVIGATION CHANGE (RECENT NOTIFICATIONS AND NOTIFICATIONS BY TYPE) -->
+              <li class=""> 
+                <a href="javascript:void(0)"><i class="fa fa-fw fa-bullhorn"></i> <span class="title"> Notifications </span> <span class="indicator hidden"> 11 </span> <i class="icon-arrow"></i> </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/adaptUI/view/vRecentNotifs.php">
+                      <span class="title"> Recent Notifications </span> <span class="indicator hidden"> 8 </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/adaptUI/view/vFreqNotifs.php">
+                      <span class="title"> Frequent Notifications </span> <span class="indicator hidden"> 8 </span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- END UPDATE: NEW INDICATORS (NUMBER IS VARIABLE), NAVIGATION CHANGE (RECENT NOTIFICATIONS AND NOTIFICATIONS BY TYPE) -->
+              <!-- UPDATE: CHANGE NAVIGATION TO ALARMS BY TYPE -->
+              <li>
+                <a href="javascript:void(0)"><i class="fa fa-fw fa-bell-o"></i> <span class="title"> Alarms </span><i class="icon-arrow"></i> </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/adaptUI/view/vRecentAlarms.php">
+                      <span class="title"> Recent Alarms </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/adaptUI/view/vFreqAlarms.php">
+                      <span class="title"> Frequent Alarms </span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="javascript:void(0)"><i class="fa fa-fw fa-laptop"></i> <span class="title"> Hosts </span><i class="icon-arrow"></i> </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/adaptUI/view/vRecentHosts.php">
+                      <span class="title"> Recent Hosts </span>
+                    </a>
+                  </li>
+                  <li class="hidden">
+                    <a href="/adaptUI/view/vFreqHosts.php">
+                      <span class="title"> Frequent Hosts </span>
+                    </a>
+                  </li>
+                  <li class="hidden">
+                    <a href="/adaptUI/view/vTrendingHosts.php">
+                      <span class="title"> Trending Hosts </span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="javascript:void(0)"><i class="fa fa-line-chart fa-fw"></i> <span class="title"> Reports </span><i class="icon-arrow"></i> </a>
+                <ul class="sub-menu">
+                  <li class="system-report">
+                    <a href="/adaptUI/view/vEnterpriseSummary.php">
+                      <span class="title"><i class="fa fa-file-text-o fa-fw icon"></i>Enterprise Summary</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="create-report" href="javascript:void(0)">
+                      <span class="title"><i class="fa fa-plus fa-fw icon"></i> Create New Report </span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="hidden">
+                <a href="javascript:void(0)"><i class="fa fa-cogs fa-fw"></i> <span class="title"> System </span><i class="icon-arrow"></i> </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/adaptUI/view/vTableList.php?tablename=cnotifylist">
+                      <span class="title">Notification Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/adaptUI/view/vTableList.php?tablename=calarmtypelist">
+                      <span class="title">Alarm Rules</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/adaptUI/view/vTableList.php?tablename=hosts">
+                      <span class="title">Host Configuration</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- end: MAIN NAVIGATION MENU -->
+          </div>
+          <!-- end: SIDEBAR -->
+        </div>
+      </nav>
+      <!-- end: PAGESLIDE LEFT -->
+      <!-- start: MAIN CONTAINER -->
+      <div class="main-container inner">
+        <!-- start: PAGE -->
+        <div class="main-content">
+          <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+          <div id="ajax-content"  class="container animated fadeInUp">
+
+          <!-- begin inner ajax main content -->
+
+            <!-- start: PAGE HEADER -->
+            <div class="toolbar row fadeInUp animated">
+              <div class="col-sm-12">
+                <div class="page-header">
+                  <!-- start: BREADCRUMB -->
+                  <ol class="breadcrumb">
+                    <li class="active"><a class="homeLink" data-position="0" data-idx="0" href="#" title="Home"><i class="icon fa fa-home"></i><span class="title">Home</span></a></li>
+                  </ol>
+                  <h1><span id="page-title" class="title">Home</span> <small id="page-sub-title">Overview &amp; Stats </small></h1>
+                </div>
+              </div>
+            </div>
+            <!-- start: PAGE CONTENT -->
+            <div class="row fadeInUp animated"> <!-- start: MAIN NETWORK ACTIVITY CHART -->
+              <div class="col-md-12">
+                <div class="panel panel-white">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Network Activity</h4>
+                    <ul class="panel-heading-tabs no-border">
+                      <li class="no-border">
+                        <div class="btn-group btn-group-sm">
+                          <a class="btn btn-default active" href="#">Hourly</a>
+                          <a class="btn btn-default" href="#">Daily</a>
+                          <a class="btn btn-default" href="#">Weekly</a>
+                          <a class="btn btn-default" href="#">Monthly</a>
+                          <a class="btn btn-default" href="#">All</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div><!-- end panel-heading -->
+                  <div class="panel-body">
+                    <div class="chart-legend">
+                      <ul>
+                        <li><span class="symbol notifications circle"></span><span class="name notifications">Notifications</span></li>
+                        <li><span class="symbol alarms circle"></span><span class="name alarms">Alarms</span></li>
+                        <li>
+                          <span class="symbol threatScore">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                              <g>
+                                <circle cx="1" cy="13" r="11" class="circle" style="fill: rgba(255, 255, 255, 0.74902); stroke: rgb(215, 55, 57); stroke-width: 2px;"></circle>
+                                <path d="M-0.021,16.438l8.644-8.644l0.125,3.34c0.004,0.161,0.141,0.289,0.305,0.283
+                                  c0.162-0.006,0.29-0.143,0.283-0.305L9.2,7.486C9.199,7.238,9.151,7.067,9.041,6.957C8.933,6.848,8.764,6.8,8.525,6.8L4.889,6.665
+                                  c-0.164-0.006-0.3,0.121-0.305,0.283C4.577,7.111,4.705,7.248,4.867,7.252l3.34,0.125l-8.645,8.644"></path>
+                              </g>
+                            </svg>
+                          </span>
+                          <span class="name threatScore">Threat Score (Radius)</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div id="activityChart" class="height-600">
+                      
+                    </div>
+                  </div> <!-- End panel-body -->
+                </div> <!-- end panel -->
+              </div> <!-- end full column -->
+            </div> <!-- end row -->
+            <div class="row fadeInUp animated"> <!-- start: FREQUENT NOTIFICATIONS & ALARMS TABLES -->
+              <div class="col-md-12">
+                <div class="panel panel-white panel-tabs">
+                  <div class="panel-body">
+                    <div class="tabbable">
+                      <div class="panel-heading tabbed">
+                        <ul class="nav nav-tabs custom">
+                          <li id="alarmsPanel" class="panel-title active">
+                            <a data-toggle="tab" href="#alarms"><span class="text-bold">Alarms</span></a>
+                          </li>
+                          <li id="hostsPanel" class="panel-title">
+                            <a data-toggle="tab" href="#offendingHosts"><span class="text-bold">Hosts</span></a>
+                          </li>
+                          <li id="notifsPanel" class="panel-title">
+                            <a data-toggle="tab" href="#notifs"><span class="text-bold">Notifications</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-content">
+                        <div id="notifs" class="tab-pane fade">
+                          <div class="table-responsive tabbable">
+                            <div class="tabbed clearfix white-bg">
+                              <ul class="nav nav-tabs custom minimal">
+                                <li class="active">
+                                  <a data-toggle="tab" href="#recentNotifs">Recent</a>
+                                </li>
+                                <li class="">
+                                  <a data-toggle="tab" href="#freqNotifs">Frequent</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content">
+                              <div id="recentNotifs" class="tab-pane active">
+                                <p>Individual notifications triggered in the past 180 days.</p>
+                                <table id="recentNotifTable" class="display table table-hover top-align">
+
+                                </table>
+                              </div>
+                              <div id="freqNotifs" class="tab-pane">
+                                <p>Most frequent notifications, grouped by type, triggered in the past 180 days.</p>
+                                <table id="freqNotifTable" class="display table table-hover top-align">
+
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="alarms" class="tab-pane fade in active">
+                          <div class="table-responsive tabbable">
+                            <div class="tabbed clearfix white-bg">
+                              <ul class="nav nav-tabs custom minimal">
+                                <li class="active">
+                                  <a data-toggle="tab" href="#recentAlarms">Recent</a>
+                                </li>
+                                <li class="">
+                                  <a data-toggle="tab" href="#freqAlarms">Frequent</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="tab-content">
+                              <div id="recentAlarms" class="tab-pane active">
+                                <p>Individual alarms triggered in the past 180 days.</p>
+                                <div id="recentAlarmTable_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="recentAlarmTable_length"><label>Show <select name="recentAlarmTable_length" aria-controls="recentAlarmTable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="recentAlarmTable" class="display table table-hover top-align dataTable no-footer" role="grid">
+
+                                <thead><tr role="row"><th class="select sorting_disabled" rowspan="1" colspan="1" aria-label=""></th><th class="type left sorting" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-label="Alarm: activate to sort column ascending">Alarm</th><th class="host left sorting" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-label="Host: activate to sort column ascending">Host</th><th class="severity center sorting" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-label="Severity: activate to sort column ascending">Severity</th><th class="assetCrit center sorting" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-label="Asset Criticality: activate to sort column ascending">Asset Criticality</th><th class="threatScore center sorting" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-label="Threat Score: activate to sort column ascending">Threat Score</th><th class="lastConnection center sorting_desc" tabindex="0" aria-controls="recentAlarmTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="Time &amp; Date: activate to sort column ascending">Time &amp; Date</th></tr></thead><tbody><tr id="26948" data-type="alarm" role="row" class="odd"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26948" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/10 00:11:00</td></tr><tr id="26947" data-type="alarm" role="row" class="even"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26947" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/10 00:10:01</td></tr><tr id="26946" data-type="alarm" role="row" class="odd"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26946" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 20:04:32</td></tr><tr id="26945" data-type="alarm" role="row" class="even"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26945" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 20:04:29</td></tr><tr id="26944" data-type="alarm" role="row" class="odd"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26944" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 16:02:22</td></tr><tr id="26943" data-type="alarm" role="row" class="even"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26943" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 16:02:20</td></tr><tr id="26942" data-type="alarm" role="row" class="odd"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26942" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 12:11:29</td></tr><tr id="26941" data-type="alarm" role="row" class="even"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26941" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 12:11:28</td></tr><tr id="26940" data-type="alarm" role="row" class="odd"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26940" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 08:08:47</td></tr><tr id="26939" data-type="alarm" role="row" class="even"><td class=" select"><i class="unseen fa fa-circle fa-fw"></i></td><td class=" type left"><a class="alarmDetailsLink" data-idx="26939" href="#" title="View Alarm Details">ARP Misuse</a></td><td class=" host left"><a class="hostDetailsLink" data-idx="7" href="#" title="View Host Details">Disc Host 10.0.1.80 0050569e23eb</a></td><td class=" severity center">1</td><td class=" assetCrit center">3</td><td class=" threatScore center">3</td><td class="lastConnection center sorting_1">2016/02/09 08:08:46</td></tr></tbody></table><div id="recentAlarmTable_processing" class="dataTables_processing" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple" id="recentAlarmTable_paginate"><a class="paginate_button previous disabled" aria-controls="recentAlarmTable" data-dt-idx="0" tabindex="0" id="recentAlarmTable_previous">Previous</a><a class="paginate_button next" aria-controls="recentAlarmTable" data-dt-idx="1" tabindex="0" id="recentAlarmTable_next">Next</a></div></div></div></div>
+                              </div>
+                              <div id="freqAlarms" class="tab-pane">
+                                <p>Most frequent alarms, grouped by type, triggered in the past 180 days.</p>
+                                <div id="freqAlarmTable_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="freqAlarmTable_length"><label>Show <select name="freqAlarmTable_length" aria-controls="freqAlarmTable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="freqAlarmTable" class="display table table-hover top-align dataTable no-footer" role="grid">
+
+                                <thead><tr role="row"><th class="select sorting_disabled" rowspan="1" colspan="1" aria-label=""></th><th class="type left sorting" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-label="Alarm: activate to sort column ascending">Alarm</th><th class="desc left sorting" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Description</th><th class="hostCnt center sorting" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-label="Associated Hosts: activate to sort column ascending">Associated Hosts</th><th class="totalAlarms center sorting" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-label="Total Alarms: activate to sort column ascending">Total Alarms</th><th class="lastConnection center sorting" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-label="Timestamp: activate to sort column ascending">Timestamp</th><th class="percentage center sorting_desc" tabindex="0" aria-controls="freqAlarmTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="Percentage of All: activate to sort column ascending">Percentage of All</th></tr></thead><tbody><tr id="17" data-type="alarm" role="row" class="odd"><td class=" select"><i class="fa fa-square-o fa-fw"></i></td><td class=" type left">Correlation Alarm</td><td class=" desc left">There are multiple correlated notifications that caused this alarm.</td><td class=" hostCnt center">8</td><td class=" totalAlarms center">26839</td><td class=" lastConnection center">2016/02/03 01:40:10</td><td class="percentage center sorting_1">99.6</td></tr><tr id="12" data-type="alarm" role="row" class="even"><td class=" select"><i class="fa fa-square-o fa-fw"></i></td><td class=" type left">ARP Misuse</td><td class=" desc left">A host has been detected sending and/or receiving ARP packets at excessive rates.  This could be an attemtped denial of service (DoS).</td><td class=" hostCnt center">2</td><td class=" totalAlarms center">109</td><td class=" lastConnection center">2016/02/10 00:11:00</td><td class="percentage center sorting_1">0.4</td></tr></tbody></table><div id="freqAlarmTable_processing" class="dataTables_processing" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="freqAlarmTable_paginate"><a class="paginate_button previous disabled" aria-controls="freqAlarmTable" data-dt-idx="0" tabindex="0" id="freqAlarmTable_previous">Previous</a><span><a class="paginate_button current" aria-controls="freqAlarmTable" data-dt-idx="1" tabindex="0">1</a></span><a class="paginate_button next disabled" aria-controls="freqAlarmTable" data-dt-idx="2" tabindex="0" id="freqAlarmTable_next">Next</a></div></div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="offendingHosts" class="tab-pane fade">
+                          <p>Hosts that have triggered alarms in the past 180 days.</p>
+                          <div class="table-responsive">
+                            <table id="freqHosts" class="display table table-hover top-align">
+
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end: FREQUENT NOTIFICATIONS & ALARMS TABLES -->
+              </div>
+            </div>
+
+          <!-- end inner ajax main content -->
+
+          </div>
+        </div>
+        <!-- end: PAGE -->
+      </div>
+      <!-- end: MAIN CONTAINER -->
+
+      <!-- start: FOOTER -->
+      <footer class="inner">
+        <div class="footer-inner">
+          <div class="pull-left">
+            2016 &copy; Cyber adAPT (version: v1.2.0-rc20160125
+)
+          </div>
+          <div class="pull-right">
+            <span class="go-top"><i class="fa fa-chevron-up"></i></span>
+          </div>
+        </div>
+      </footer>
+      <!-- end: FOOTER -->
+    </div>
+
+    <div class="loading-modal"></div>
+
+    <!-- g_baseURI variable definition - Needed for some package javascript files -->
+    <script type="text/javascript"> //Should be called before inclusion of any Cyber adAPT script
+      var g_baseURI = "/adaptUI";
+    </script>
+
+    <script type="text/javascript"> //Should be called before inclusion of any Cyber adAPT script
+      //Set some global 'constants' to server returned values
+      var AJAX_RESULT_OK = "ok";
+      var AJAX_RESULT_ERROR = "error";
+      var AJAX_RESULT_EXCEPTION = "exception";
+
+      var g_maxPossibleThreatScore = 25;
+      var g_maxSeverity = 5;
+      var g_maxAssetCrit = 5;
+      var g_minSeverity = 1;
+      var g_minAssetCrit = 1;
+      var g_monitoredStartIdx = 4;
+      var g_googleAPIKey = null;
+      var g_rowLimit = 1000;
+      var g_dataTypeAlarm = 0;
+      var g_dataTypeNotif = 1;
+      var g_iScriptedDemo = 0; //1 = scripted; 0 = not scripted
+    </script>
+
+    <script type="text/javascript" src="/adaptUI/js/common.js"></script>
+    <script type="text/javascript" src="/adaptUI/js/hostDirectedGraphClass.js"></script> <!--  swells: Needed right now for FDG and Geo Location -->
+    <script type="text/javascript" src="/adaptUI/js/geoLocationIPClass.js"></script> <!--  swells: Needed right now for FDG and Geo Location -->
+    <script type="text/javascript" src="/adaptUI/js/busyIndicatorClass.js"></script> <!--  swells: Needed right now for FDG and Geo Location -->
+    <script type="text/javascript" src="/adaptUI/js/adAPTToolTipClass.js"></script>
+    <script type="text/javascript" src="/adaptUI/js/setPasswordClass.js"></script>
+    <script type="text/javascript" src="/adaptUI/js/template.js"></script>
+
+    <!-- end: ORIGINAL CYBERADAPT SCRIPTS -->
+
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <script src="assets/plugins/excanvas.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js"></script>
+    <![endif]-->
+    <script src="/adaptUI/view/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="/adaptUI/view/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+<!--    <script src="/adaptUI/view/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script> -->
+<!--    <script src="/adaptUI/view/assets/plugins/bootbox/bootbox.min.js"></script> -->
+    <script src="/adaptUI/view/assets/plugins/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/jquery.appear/jquery.appear.js"></script>
+    <script src="/adaptUI/view/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="/adaptUI/view/assets/plugins/velocity/jquery.velocity.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/tipsy/jquery.tipsy.js"></script>
+    <script src="/adaptUI/view/assets/plugins/TouchSwipe/jquery.touchSwipe.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/DataTables-1.10.7/media/js/jquery.dataTables.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/moment/moment.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/moment-timezone/moment-timezone-with-data.min.js"></script>   
+    <!-- end: MAIN JAVASCRIPTS -->
+
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY - BUILT FOR DASHBOARD DEFAULT -->
+    <script src="/adaptUI/view/assets/plugins/d3-3.5.6/d3.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/cubism-master/cubism.v1.min.js"></script>
+    <script src="/adaptUI/view/assets/plugins/radar-chart/src/radar-chart.min.js"></script>
+    <script src="/adaptUI/view/assets/js/charts.js"></script>
+    <script src="/adaptUI/view/assets/js/table-data.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+    <!-- start: CORE JAVASCRIPTS  -->
+    <script src="/adaptUI/view/assets/js/main.js"></script>
+    <!-- end: CORE JAVASCRIPTS  -->
+
+    <!-- start: LOADED DATA / JAVASCRIPTS  -->
+
+    <!-- end: LOADED DATA / JAVASCRIPTS  -->
+
+    <script>
+      jQuery(document).ready(function() {
+        g_userTimeZone = moment.tz.guess(); 
+        moment.tz.setDefault(g_userTimeZone); 
+        Main.init();
+        Charts.init();
+      });
+    </script>
+
+  </body>
+  <!-- end: BODY -->
+</html>

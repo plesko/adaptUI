@@ -1,0 +1,262 @@
+/* ---------------------------------------------------------------------- */
+/*  Theme Default
+/* ---------------------------------------------------------------------- */
+/* line 10, ../../sass/themes/theme-cyberadapt.scss */
+body {
+  background-color: #bcbcbc;
+}
+/* line 12, ../../sass/themes/theme-cyberadapt.scss */
+body.layout-boxed {
+  background: url("../../images/bg.png") #bcbcbc;
+}
+
+/* line 16, ../../sass/themes/theme-cyberadapt.scss */
+#slidingbar {
+  background: rgba(188, 188, 188, 0.9);
+}
+
+/* line 19, ../../sass/themes/theme-cyberadapt.scss */
+.main-container, #pageslide-left, #pageslide-right {
+  background-color: #bcbcbc !important;
+}
+
+/* line 22, ../../sass/themes/theme-cyberadapt.scss */
+.label-default, .badge-default {
+  background: #e66b6b !important;
+}
+
+/* line 26, ../../sass/themes/theme-cyberadapt.scss */
+.pace .pace-progress {
+  background: #2d3039;
+}
+
+/* line 30, ../../sass/themes/theme-cyberadapt.scss */
+.topbar {
+  background: #2d3039;
+  box-shadow: 0px 3px 0px 0px rgba(45, 48, 57, 0.4);
+}
+/* line 33, ../../sass/themes/theme-cyberadapt.scss */
+.topbar > .container {
+  padding-left: 0 !important;
+}
+/* line 36, ../../sass/themes/theme-cyberadapt.scss */
+.topbar > .container .navbar-brand, .topbar .logo {
+  color: #ffffff;
+}
+/* line 40, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .topbar-tools > ul > li .white-stroke {
+  border: 1px solid #ffffff;
+  margin-right: 20px;
+  max-height: 40px;
+}
+/* line 45, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .topbar-tools > ul > li .lighterBlue-stroke {
+  border: 1px solid #5a6072;
+  margin-right: 20px;
+  max-height: 40px;
+}
+/* line 50, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .topbar-tools > ul > li > a {
+  color: #ffffff;
+}
+/* line 53, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .topbar-tools > ul > li.right-menu-toggle > a {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #2d3039;
+}
+/* line 59, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .nav li.dropdown.open > .dropdown-toggle, .topbar .nav li.dropdown.active > .dropdown-toggle, .topbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background: none;
+  color: #ffffff;
+}
+/* line 63, ../../sass/themes/theme-cyberadapt.scss */
+.topbar .nav > li:hover > a, .topbar .nav > li:active > a, .topbar .nav > li > a:focus {
+  color: #ffffff;
+  background: none;
+}
+
+/* line 71, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu > li a {
+  border-bottom: none;
+  border-top-color: #c9c9c9;
+  color: #22262f !important;
+}
+/* line 75, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu > li a i {
+  font-weight: normal;
+}
+/* line 80, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu > li.active > a {
+  background: #cbcbcb !important;
+  border-top: none !important;
+  color: #22262f;
+}
+/* line 84, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu > li.active > a i {
+  color: #22262f;
+}
+
+/* line 89, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu li > ul.sub-menu > li > a:hover {
+  background: #cbcbcb;
+}
+
+/* line 93, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu li > ul.sub-menu > li.open > a, ul.main-navigation-menu li > ul.sub-menu > li.active > a, ul.main-navigation-menu li > ul.sub-menu > li.open > a:hover, ul.main-navigation-menu li > ul.sub-menu > li.active > a:hover {
+  background: #afafaf !important;
+}
+
+/* line 97, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu > li.open > a, ul.main-navigation-menu > li > a:hover, ul.main-navigation-menu > li:hover > a {
+  background-color: #b7b7b7 !important;
+}
+
+/* line 100, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu li.divider {
+  background-color: #c9c9c9 !important;
+}
+
+/* line 103, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu li.dropdown-header, ul.main-navigation-menu .mega-menu-sub-title {
+  color: white !important;
+}
+
+/* line 106, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu a {
+  color: white !important;
+}
+/* line 108, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu a:hover {
+  background: none !important;
+}
+
+/* line 112, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu li.active a, ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu li.active a:hover, ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu li.active a:focus {
+  background-color: #afafaf !important;
+  text-decoration: none;
+}
+
+/* line 116, ../../sass/themes/theme-cyberadapt.scss */
+ul.main-navigation-menu .mega-menu .mega-menu-content ul.mega-sub-menu li a:hover {
+  background-color: #cbcbcb !important;
+  text-decoration: none;
+}
+
+/* line 121, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .container {
+  background: #bcbcbc;
+}
+/* line 127, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .navbar-collapse .navbar-nav > li > a {
+  color: white;
+}
+/* line 129, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .navbar-collapse .navbar-nav > li > a:hover {
+  color: white;
+  background: #afafaf;
+}
+/* line 133, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .navbar-collapse .navbar-nav > li > a:active, #horizontal-menu .navbar-collapse .navbar-nav > li > a:focus {
+  background: #a3a3a3;
+}
+/* line 138, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .navbar-collapse .navbar-nav > li.active > a {
+  color: white;
+  background: #e66b6b;
+}
+/* line 141, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .navbar-collapse .navbar-nav > li.active > a:after {
+  border-top-color: #e66b6b;
+}
+/* line 152, ../../sass/themes/theme-cyberadapt.scss */
+#horizontal-menu .dropdown-menu .active a {
+  background-color: #2d3039;
+}
+
+/* line 158, ../../sass/themes/theme-cyberadapt.scss */
+.main-content {
+  background: #f2f2f2;
+}
+
+/* line 161, ../../sass/themes/theme-cyberadapt.scss */
+.go-top {
+  color: #bcbcbc;
+}
+
+/* line 164, ../../sass/themes/theme-cyberadapt.scss */
+.footer-inner {
+  color: #bcbcbc;
+}
+
+/* line 168, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .slide-tools {
+  background-color: #afafaf;
+}
+/* line 171, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .btn {
+  color: rgba(34, 38, 47, 0.3);
+}
+/* line 173, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .btn:hover {
+  color: #22262f;
+  background-color: rgba(17, 19, 23, 0.4);
+}
+/* line 178, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .user-profile {
+  border-color: #2d323e;
+  position: relative;
+}
+/* line 181, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .user-profile h5 {
+  color: #6e727c;
+}
+/* line 184, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-left .user-profile h4 {
+  color: #22262f;
+}
+
+/* line 189, ../../sass/themes/theme-cyberadapt.scss */
+.closedbar {
+  background-color: #afafaf !important;
+}
+/* line 191, ../../sass/themes/theme-cyberadapt.scss */
+.closedbar:hover {
+  background-color: #bcbcbc !important;
+}
+
+/* line 196, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-right .pageslide-title {
+  color: rgba(34, 38, 47, 0.4);
+}
+/* line 200, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-right .notifications a {
+  color: #22262f;
+  background: #b4b4b4;
+}
+/* line 203, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-right .notifications a:hover {
+  background: #afafaf;
+}
+/* line 206, ../../sass/themes/theme-cyberadapt.scss */
+#pageslide-right .notifications a .time {
+  color: white;
+}
+
+/* line 213, ../../sass/themes/theme-cyberadapt.scss */
+#style_selector_container .box-title {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+/* line 216, ../../sass/themes/theme-cyberadapt.scss */
+#style_selector_container .images {
+  border-bottom: 1px solid #c9c9c9;
+}
+/* line 218, ../../sass/themes/theme-cyberadapt.scss */
+#style_selector_container .images img.active {
+  border: 2px solid white;
+}
+
+/* line 223, ../../sass/themes/theme-cyberadapt.scss */
+footer {
+  background-color: #f2f2f2;
+}

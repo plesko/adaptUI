@@ -1,0 +1,282 @@
+/* ---------------------------------------------------------------------- */
+/*  Tables
+/* ---------------------------------------------------------------------- */
+.table > thead > tr > th {
+  border-bottom: 1px solid lighten($grey, 30%);
+  line-height: 1.25;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid lighten($grey, 30%);
+}
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+  background-color: lighten($grey, 40%);
+}
+.table > tbody > tr.active > td, .table > tbody > tr.active > th {
+  background-color: lighten($grey, 38%) !important;
+  color: $text-color !important;
+}
+.table > tbody > tr.active:hover > td, .table > tbody > tr.active:hover > th {
+  background-color: lighten($grey, 36%) !important;
+  color: $text-color !important;
+}
+th.center, td.center {
+  text-align: center;
+}
+td.center .dropdown-menu {
+  text-align: left;
+}
+td.small-width {
+  width: 15%;  
+}
+.table thead tr {
+  color: inherit;
+  font-weight: normal;
+}
+.table.table-bordered thead tr th {
+  vertical-align: middle;
+}
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+  padding: 5px 10px 5px 10px;
+  vertical-align: middle;
+}
+
+.editable-element {
+  border-bottom: 1px dashed #0088CC;
+  text-decoration: none;
+  opacity: 0.5;
+  display: inline;
+}
+
+.clickable tr {
+  cursor: pointer;
+}
+
+tr.even {
+  background: #fbfbfb;
+}
+
+.dataTables_length {
+  display: inline-block;
+  width: 50%;
+}
+
+.dataTables_wrapper .row {
+  margin-bottom: 10px;
+}
+
+.tab-content {
+  
+  .dataTables_length {
+    display: none;
+  }
+}
+
+.dataTables_filter {
+  text-align: right;
+  
+  input {
+    width: 250px;
+    outline: 0;
+  }
+}
+
+.dataTables_paginate {
+  padding: 10px 0 0 0;
+
+  .paginate_button {
+    border: 1px solid $link-color;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px 10px;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Table Column Class Styles
+/* ---------------------------------------------------------------------- */
+
+table {
+  margin-bottom: 15px !important;
+
+  a {
+    color: darken($text-color, 10%);
+    border-bottom: 1px solid darken($text-color, 10%);
+    outline: 0 !important;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    
+    &:hover, &:focus, &:active {
+      color: darken($text-color, 25%);
+      border-bottom: 1px solid transparent;
+      text-decoration: none;
+    }
+  }
+
+  tr.muted {
+    @include opacity(.5);
+  }
+
+  &.dataTable tbody tr.selected {
+    background-color: initial;
+  }
+
+  &.dataTable.hover tbody tr:hover.selected, &.dataTable.display tbody tr:hover.selected {
+    background-color: whitesmoke;
+  }
+
+  th.select, td.select {
+    overflow: hidden;
+    padding-right: 0 !important;
+    text-align: center;
+    width: 20px;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+
+    i {
+      cursor: pointer;
+    }
+
+    .fa-circle {
+      color: $link-color;
+      font-size: 12px;
+    }
+  }
+
+  th.select i {
+    cursor: default;
+    opacity: 0;
+  }
+
+  .hosts, .host {
+    min-width: 15%;
+  }
+
+  .type {
+    width: 15%;
+  }
+
+  .desc {
+    width: 50%;
+  }
+
+  .assetCrit, .threatScore, .severity, .totalNotifs, .totalAlarms, .totalConnections, 
+  .location, .detections, .hostCnt, .notifCnt, .alarmCnt, .percentage, .sourceIP, .targetIP {
+    width: 10%;
+  }
+
+  .lastConnection {
+    width: 15%;
+  }
+
+  .auto-width {
+    width: auto !important;
+  }
+
+  &.top-align td {
+    vertical-align: top !important;
+  }
+}
+
+
+/* ---------------------------------------------------------------------- */
+/*  Alarm Details Page
+/* ---------------------------------------------------------------------- */
+
+.alarmDetails {
+
+  .detailTable {
+    display: table;
+    padding-bottom: 10px;
+
+    p {
+      display: table-row;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      .detail-label {
+        display: table-cell;
+        padding: 0px 20px 10px 0px;
+        text-align: right;
+        width: 25%;
+
+        &:first-child {
+          padding: 0 20px 10px 0px;
+        }
+      }
+      .detail-data {
+        display: table-cell;
+        padding: 0px 0px 10px 20px;
+        width: 75%;
+      }
+    }
+  }
+}
+
+.historical {
+
+  .chart {
+
+    .host {
+      // white-space: nowrap;
+    }
+  }
+}
+
+// Table Styles for Flexbox Support
+
+// flexbox support for scroll-y
+@mixin dt-display-flex {
+  display: -webkit-flex; // support for responsive scroll-y
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin dt-flex-11a {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+@mixin dt-flex-100 {
+  -webkit-flex: 1 0 0px;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0px;
+}
+@mixin dt-flex-vertical {
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+
+.table-container {
+  @include dt-display-flex;
+  @include dt-flex-11a;
+  width: 100%;
+}
+
+.dataTables_wrapper {
+  width: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  @include dt-display-flex;
+  @include dt-flex-vertical;
+  @include dt-flex-11a;
+}
+
+table.dataTable thead th:active,
+table.dataTable thead td:active {
+  outline: none;
+}
+
+// scroll-x and scroll-y support
+// content-box rule is critical
+
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}

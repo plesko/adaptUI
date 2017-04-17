@@ -1,0 +1,2 @@
+Need to modify  zxcvbn-async.js:
+Change b.src statement to: b.src=g_baseURI + "/js/zxcvbn/zxcvbn.js";

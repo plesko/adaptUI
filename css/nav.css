@@ -1,0 +1,158 @@
+nav.navigate1 {
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	padding: 0.25% 0;
+    width: 99%;
+	background: #A9ABAE; 
+	/* box-shadow: 4px 4px 8px #000000; */ 
+	float: right;
+	border-bottom-right-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+/*Over ride link text color and deco*/
+nav.navigate1 a {
+	color: #ffffff;
+	font-size: 1em;
+	font-style: normal;
+	text-decoration: none !important;
+}
+
+nav.navigate1 a:hover {
+	color: #fefefe;
+	text-decoration: underline;
+}
+
+nav.navigate1 a:visited {
+	color: #ffffff
+	text-decoration: none !important;
+}
+
+/*Remove list style */
+ul.hnavbar1,
+ul.hnavbar1 li ul,
+ul.hnavbar1 li ul li ul {
+    list-style: none;
+    cursor: pointer;
+}
+
+/*float list items - 1rst tier*/
+ul.hnavbar1 li {
+	position: relative;
+	margin: 0 0.5%;
+	float: left;
+
+  color: #FFFFFF;
+  font-size: 0.8em;
+  font-style: normal;
+  text-decoration: none !important;
+
+  display: block;
+  margin: 0 5px;
+  padding: 2px 5px;
+
+}
+
+ul.hnavbar1 li.righty {
+	position: relative;
+	margin: 0.05%;
+	float: right;
+	min-width:5em;
+	text-align:right;
+}
+
+/* Define Button Appearance and Hover change*/
+
+ul.hnavbar1  a {
+    display: block;
+    width: 10em;
+    padding: 2px 5px;
+    margin: 0 5px;
+}
+
+ul.usernavbar a {
+	display: inline;
+}
+
+ul.hnavbar1  a.aAlt {
+    display: block;
+    width: auto;
+    padding: 2px 5px;
+    margin: 0 5px;
+}
+
+ul.hnavbar1  a:hover {
+    
+/*    background: #898989;
+    box-shadow: 2px 2px 4px #000000 inset; */
+}
+
+
+/* Hide nested lists*/
+ul.hnavbar1 li ul,
+ul.hnavbar1 li:hover ul li ul,
+ul.right {
+	position: absolute;
+	display:none
+}
+
+/*display 2nd tier list*/
+
+ul.hnavbar1 li:hover ul {
+	position: absolute;
+	display: block;
+	left: 0;
+	margin: 0px 0px;
+	background: #FFFFFF;
+//	white-space:nowrap; 
+	z-index:10;
+	box-shadow: 4px 4px 8px #000000;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-indent: -0.5em;
+    padding-left: 0.5em;
+}
+
+ul.hnavbar1 li ul li a{
+	font-size: 0.8em;
+	font-style: normal;
+	color: #5F6062;
+	text-shadow: none;
+}
+
+ul.hnavbar1 li ul li a:hover{
+	font-size: 0.8em;
+	font-style: normal;
+	color: #C1CD23;
+	text-shadow: none;
+}
+
+/*Display 3rd tier list*/
+ul.hnavbar1 li ul li:hover ul {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: +105%; /* display to left */
+	 /* width is based on the containing block */
+	z-index: 10;
+    box-shadow: 4px 4px 8px #000000;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+/*Display 3rd tier list*/
+ul.hnavbar1 li ul li:hover ul.right {
+	display: block;
+	position: absolute;
+	white-space: nowrap;
+	left: -100%; /* display  to left */
+	 /* width is based on the containing block */
+	z-index: 10;
+    box-shadow: 4px 4px 8px #000000;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+

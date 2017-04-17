@@ -1,0 +1,110 @@
+//  Default Colour Settings
+
+// Red
+$red: #e66b6b;
+$lightRed: lighten($red, 10%);
+$darkRed: darken($red, 10%);
+$cared: #a54a4c;
+$calightRed: lighten($cared, 10%);
+$cadarkRed: darken($cared, 10%);
+// Orange
+$orange: #F58A5C;
+$lightOrange: lighten($orange, 10%); 
+$darkOrange: darken($orange, 10%);
+// Green
+$green: #659d29;
+$lightGreen: lighten($green, 10%);
+$darkGreen: darken($green, 10%);
+$cagreen: #659d29; 
+$calightGreen: lighten($cagreen, 10%);
+$cadarkGreen: darken($cagreen, 10%);
+// Blue
+$blue: #2d3039;
+$lighterBlue: lighten($blue, 20%);
+$lightBlue: lighten($blue, 10%); 
+$darkBlue: #22262f;
+// Pink
+$pink: #DD5A82;
+$lightPink: lighten($pink, 10%);
+$darkPink: darken($pink, 10%);
+// Purple
+$purple: #804C75;
+$lightPurple: lighten($purple, 10%);
+$darkPurple: darken($purple, 10%);
+// Azure
+$azure: #00BDCC;
+$lightAzure: lighten($azure, 5%);
+$darkAzure: darken($azure, 10%);
+// Beige
+$beige : #cc9;
+$lightBeige: lighten($beige, 5%);
+$darkBeige: darken($beige, 10%);
+// Grey
+$grey : #8B91A0;
+$lightGrey: lighten($grey, 10%);
+$darkGrey: darken($grey, 10%);
+// Yellow
+$yellow : #FFB848;
+$lightYellow: lighten($yellow, 10%);
+$darkYellow: darken($yellow, 10%);
+$cayellow : #efc900; 
+$calightYellow: lighten($cayellow, 10%);
+$cadarkYellow: darken($cayellow, 10%);
+// Bricky
+$bricky: #894550;
+$lightBricky: lighten($bricky, 10%);
+$darkBricky: darken($bricky, 10%);
+// text
+$catext: #8B91A0; 
+$calightText: lighten($catext, 10%);
+$cadarkText: darken($catext, 10%);
+// titles
+$catitle: #808697; 
+$calightTitle: lighten($catitle, 10%);
+$cadarkTitle: darken($catitle, 10%);
+
+$black: #2C2F3B; // Black
+$gray: #76787d;
+$white: #ffffff; // White
+
+$text-color: #8B91A0 !default;
+$link-color: #9d0102 !default;
+
+$font-family-primary: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-default: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+$font-size-base: 14px !default;
+$font-size-normal: 15px !default;
+$font-size-large: floor(($font-size-base * 1.25)) !default; // ~15px
+$font-size-extra-large: floor(($font-size-base * 1.40)) !default; // ~18px
+$font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
+$font-size-extra-small: floor(($font-size-base * 0.85)) !default; // ~11px
+
+$h1-size-base: 36px !default;
+$h1-size-extra-large: floor(($h1-size-base * 1.40)) !default; // ~50px
+
+$header-height: 70px;
+$mobile-header-height: 50px;
+$slideBar-width: 300px;
+$footer-height: 50px;
+$horizontal-menu-height: 40px;
+
+
+//  breakpoints
+
+// Extra small screen / phone
+$screen-xs-min:                 480px !default;
+
+// Small screen / tablet
+$screen-sm-min:                 768px !default;
+
+// Medium screen / desktop
+$screen-md-min:                 992px !default;
+
+// Large screen / wide desktop
+$screen-lg-min:                 1200px !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:                 ($screen-sm-min - 1) !default;
+$screen-sm-max:                 ($screen-md-min - 1) !default;
+$screen-md-max:                 ($screen-lg-min - 1) !default;

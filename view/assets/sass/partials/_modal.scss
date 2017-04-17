@@ -1,0 +1,84 @@
+/* ---------------------------------------------------------------------- */
+/*  Modals
+/* ---------------------------------------------------------------------- */
+.modal-backdrop {
+  z-index: 1040 !important;
+}
+
+.modal {
+  margin-top: 100px;
+}
+
+.item-actions {
+	height: $header-height;
+	left: 0;
+	position: fixed;
+	top: 0;
+	transform: translate(0,-$header-height);
+	width: 100%;
+	z-index: 10000;
+	-webkit-transition: .25s ease-in-out;
+	-moz-transition: .25s ease-in-out;
+	-o-transition: .25s ease-in-out;
+	transition: .25s ease-in-out;
+
+	&.slideOut {
+		transform: translate(0,0);
+	}
+
+	.background {
+		background: $darkBlue;
+		display: block;
+		height: 70px;
+		left: 0;
+		opacity: .9;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 100;
+	}
+
+	.dropdown-menu.dropdown-dark li a {
+		white-space: nowrap !important;
+	}
+
+	& > ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: 150;
+
+		& > li {
+			display: inline-block;
+			font-size: 16px;
+			line-height: 70px;
+			padding: 0 0 0 25px;
+			white-space: nowrap;
+
+			a {
+				color: $white;
+
+				i {
+					padding-right: 15px;
+
+					&.fa-fw {
+						width: auto;
+					}
+
+					&.fa-remove {
+						display: none;
+					}
+				}
+			}
+
+			&:first-child {
+				width: $slideBar-width;
+			}
+		}
+	}
+
+	li {
+		white-space: nowrap;
+	}
+}

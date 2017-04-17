@@ -1,0 +1,319 @@
+/* ---------------------------------------------------------------------- */
+/*  Charts
+/* ---------------------------------------------------------------------- */
+
+svg {
+  font: 10px sans-serif;
+}
+
+.notifLine {
+  fill: none;
+  stroke: rgba(237,202,36,1);
+  stroke-width: 2;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+.axis text {
+  -webkit-transition: fill-opacity 250ms linear;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: rgba(0,0,0,.75);
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+
+.x.axis line {
+  display: block !important;
+  opacity: .25 !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Radar Charts
+/* ---------------------------------------------------------------------- */
+
+.radar-chart .level {
+  stroke: grey;
+  stroke-width: 0.5;
+}
+
+.radar-chart .axis line {
+  stroke: grey;
+  stroke-width: 1;
+}
+.radar-chart .axis .legend {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+.radar-chart .axis .legend.top {
+  dy:1em;
+}
+.radar-chart .axis .legend.left {
+  text-anchor: start;
+}
+.radar-chart .axis .legend.middle {
+  text-anchor: middle;
+}
+.radar-chart .axis .legend.right {
+  text-anchor: end;
+}
+
+.radar-chart .tooltip {
+  font-family: sans-serif;
+  font-size: 13px;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+.radar-chart .tooltip.visible {
+  opacity: 1;
+}
+
+/* area transition when hovering */
+.radar-chart .area {
+  stroke-width: 2;
+  fill-opacity: 0.5;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.1;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.7;
+}
+
+.radar-chart .circle {
+  fill-opacity: 0.9;
+}
+
+/* transitions */
+.radar-chart .area, .radar-chart .circle {
+  transition: opacity 300ms, fill-opacity 200ms;
+  opacity: 1;
+}
+.radar-chart .d3-enter, .radar-chart .d3-exit {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Cluster Dendrogram Charts
+/* ---------------------------------------------------------------------- */
+
+.cluster .node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.cluster .node text {
+  font: 12px sans-serif;
+}
+
+.cluster .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Chart Tool Tip (using Tipsy)
+/* ---------------------------------------------------------------------- */
+
+.alarmPoint {
+  position: relative;
+
+  foreignobject {
+    position: absolute;
+  }
+}
+
+.chartTip {
+  background: #eee;
+  box-shadow: 0 0 2px #999999;
+  color: $text-color;
+  font-size: 12px;
+  left: -50px;
+  padding: 10px;
+  position: relative;
+  text-align: left;
+  top: -95px;
+  width: 160px;
+  z-index: 10000;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+
+      p {
+        margin: 0 0 5px 0;
+        padding: 0;
+
+        &.alarm {
+
+        }
+
+        &.host {
+
+        }
+      }
+    }
+  }
+
+  .date {
+
+  }
+
+  .threatScrore {
+
+  }
+
+  .alarm {
+
+  }
+
+  .host {
+
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Recent Activity Chart Legend (HTML, not JS)
+/* ---------------------------------------------------------------------- */
+
+.chart-legend {
+  background: rgba(255,255,255,.9);
+  height: auto;
+  left: 15px;
+  padding: 10px;
+  position: absolute;
+  top: -10px;
+  width: auto;
+  z-index: 100;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    li {
+      position: relative;
+    }
+  }
+
+  .symbol, .name {
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .symbol {
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 13px;
+    height: 14px;
+    margin-right: 6px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: text-bottom;
+    width: 14px;
+
+    &.notifications {
+      background: rgba(237,202,36,1);
+    }
+
+    &.alarms {
+      background: rgba(215,55,57,1);
+    }
+
+    &.threatScrore {
+      background: $white;
+    }
+
+    &.root {
+      background: rgba(192,59,60,.8);
+    }
+
+    &.one-hop {
+      background: rgba(76,124,185,.8);
+    }
+
+    &.two-hop {
+      background: rgba(153,185,41,.8);
+    }
+
+    &.three-hop {
+      background: rgba(153,185,41,.5);
+    }
+
+    &.unknown {
+      background-color: transparent;
+      border: 1px solid $gray;
+    }
+
+    &::before {
+      font-size: 16px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 20;
+      -ms-transform: rotate(45deg); /* IE 9 */
+      -webkit-transform: rotate(45deg); /* Safari */
+      transform: rotate(45deg);
+    }
+
+    svg {
+      display: block;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+
+      circle {
+        cursor: default;
+        transform: translate(1px, 1px);
+      }
+
+      line, path {
+        stroke: $text-color;
+        stroke-width: 1px;
+        transform: translate(-1px, 1px);
+      }
+    }
+  }
+
+  .name {
+
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Cluster Dendrogram Charts
+/* ---------------------------------------------------------------------- */
+
+.fdg .node circle {
+  cursor: pointer;
+}
+
+.fdg .node text {
+  color: $white !important;
+  cursor: pointer;
+  fill: #ffffff;
+  font: 26px sans-serif;
+}
+
+.fdg .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}

@@ -1,0 +1,168 @@
+{
+	"data": [{
+		"date": "2015-03-31 16:52:33",  	
+		"unixDate": "1431369431",  	
+		"notifCnt": "1337",
+		"alarms": {
+			"alarm": [
+				{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:33",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				},{
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:33",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5" 
+				},{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:33",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				}
+			],
+			"total": "3",
+			"avgSeverity": "3.4",
+			"avgThreat": "4.1",
+			"avgCrit": "3.7"
+		},
+		"hostCnt": "13", 
+		"avgHostCrit": "3.1"
+	},{ 
+		"date": "2015-03-31 16:52:34",  	
+		"unixDate": "1431369431",  	
+		"notifCnt": "4359",
+		"alarms": {
+			"alarm": [
+				{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:34",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				},{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:34",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				}
+			],
+			"total": "2",
+			"avgSeverity": "3.4",
+			"avgThreat": "4.1",
+			"avgCrit": "3.7"
+		},
+		"hostCnt": "4", 
+		"avgHostCrit": "3.1"
+	},{ 
+		"date": "2015-03-31 16:52:35",  	
+		"unixDate": "1431369431",  	
+		"notifCnt": "736",
+		"alarms": {
+			"alarm": [
+				{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:35",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				},{
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:35",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5" 
+				},{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:35",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				},{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:35",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				},{ 
+					"idx": "100",
+					"hostIdx": "638",
+					"date": "2015-03-31 16:52:35",  	
+					"unixDate": "1431369431",
+					"type": "Host Acting as Relay",
+					"aDesc": "Data is being relayed to this host and relayed out to the Internet.",
+					"rDesc": "Special DEMO ONLY rule.  Looks for a SUSPICIOUS-UDP-PRIVILEGED-PORT notification with an Observed-PM of :CIFS.",
+					"hostName": "Disc Host 10.0.1.232 C0EAE45C99C4",
+					"severity": "4",
+					"threat": "2",
+					"criticality": "5"
+				}
+			],
+			"total": "5",
+			"avgSeverity": "3.4",
+			"avgThreat": "4.1",
+			"avgCrit": "3.7"
+		},
+		"hostCnt": "8", 
+		"avgHostCrit": "2.1"
+	}]
+}

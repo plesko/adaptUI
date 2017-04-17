@@ -1,0 +1,621 @@
+
+#main {
+	width:100%;
+	background: #ffffff;
+	float: left;
+	margin: 1% 0;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #202020;
+	position: relative;
+}
+
+#main h1 {
+	font-size : 1.4em;
+	text-align : center;
+	color : #C1CD23;
+	margin: 2% 0 ;
+
+}
+
+#main p {
+	text-align : left;
+	text-indent : 1em ;
+	margin: 2% 10%
+}
+
+#main img {
+//	margin: 4% 4%;
+	border-radius: 5px;
+//	border: solid #000000 1px;
+	box-shadow: 4px 4px 8px #202020
+}
+
+#main img {
+    max-width: 50%;
+}
+
+address {
+	font-size : .75em;
+	text-align : center;
+	color: #efefef;
+	padding: 0.25% 0;
+	text-shadow: 1px 1px 0px #202020
+}
+
+img.logo {
+	position:relative;
+	float: left;
+}
+
+div.user {
+	float: right;
+	margin: 0 1%;
+	background: #D2D5D5;
+	position:relative;
+	text-align:right;
+
+}
+
+div.user a, 
+div.user a:visited {
+    color: #5F6062;	
+}
+
+div.user a:hover {
+	color: #C1CD23;
+}
+
+div.logout {
+    float: right;
+    margin: 0 1%;
+    background: #D2D5D5;
+
+}
+
+div.logout a, 
+div.logout a:visited {
+    color: #A9ABAE; 
+    text-decoration: none;
+}
+
+div.logout a:hover {
+    color: #F0F0F0;
+}
+
+table {
+	color: #0e0e0e;
+	background: #D2D5D5;
+}
+
+th {
+	text-align: left;
+	padding: 2px 2px 2px 4px;
+	background: #D2D5D5;
+}
+
+td {
+	font-size: 0.6em;
+}
+
+tr  {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 2px 2px 2px 4px;
+	color: #4f6b72;
+}
+
+tr.odd  {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #ECECEC;
+	padding: 2px 2px 2px 4px;
+	color: #4f6b72;
+}
+
+table.smallHeaderTable { /*ex: Alarm details page - cluster graph Host Header key table*/
+	border: none;
+	background: #ffffff;	
+}
+
+div.pager {
+	display:none;
+}
+
+/* pager wrapper, div */
+.tablesorter-pager {
+  padding: 2px;
+}
+/* pager wrapper, in thead/tfoot */
+td.tablesorter-pager {
+  background-color: #e6eeee;
+  margin: 0; /* needed for bootstrap .pager gets a 18px bottom margin */
+}
+/* pager navigation arrows */
+.tablesorter-pager img {
+  vertical-align: middle;
+  margin-right: 0px;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  background: #A9ABAE;
+  box-shadow: 2px 2px 4px #202020
+}
+
+/* pager output text */
+.tablesorter-pager .pagedisplay {
+  padding: 0 5px 0 5px;
+  min-width: 75px;
+  text-align: center;
+}
+
+/* pager element reset (needed for bootstrap) */
+.tablesorter-pager select {
+  margin: 0;
+  padding: 0;
+}
+
+/*** css used when "updateArrows" option is true ***/
+/* the pager itself gets a disabled class when the number of rows is less than the size */
+.tablesorter-pager.disabled {
+  display: none;
+}
+/* hide or fade out pager arrows when the first or last row is visible */
+.tablesorter-pager .disabled {
+  /* visibility: hidden */
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  cursor: default;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: san-serif;
+	font-size: 0.75em;
+}
+.axis text tspan { /* x-Axis of Dashboard host threat map */
+	font-family: san-serif;
+	font-size: 1.1em;
+}
+
+img.dashboard_icon {
+	vertical-align: middle;
+	height: 20px;
+	width: 20px;
+/*  padding-bottom: 0.60em;*/
+	padding-top: 0.20em;
+	padding-right: 0.20em;
+}
+
+img.user_icon {
+	vertical-align: middle;
+	height: 20px;
+	width: 20px;
+/*	padding-bottom: 0.60em;*/
+	padding-top: 0.40em;
+	padding-right: 0.20em;
+}
+
+div.timeChartHolder {
+	padding: 7px;
+	margin: 7px;
+	width: 67%;
+	float: left;
+	display:block;
+	box-shadow: 2px 2px 4px #202020;
+	border-bottom-right-radius: 5px;
+    border-top-left-radius: 7px;
+}
+
+div.timeChart {
+	padding-top: 7px;
+	padding-right: 7px;
+	padding-bottom: 7px;
+	padding-left: 7px;
+	width:56%;
+	height: 350px;
+	float:left;
+	display:inline;
+}
+
+div.summaryTable {
+	box-shadow: 2px 2px 4px #202020 inset;
+	padding-top: 7px;
+	padding-right: 2px;
+	padding-bottom: 7px;
+	padding-left: 7px;
+	float: left;
+	width:40%;
+	display:inline;
+}
+
+div.timeTable {
+	float: left;
+	margin-top: 10px;
+	padding-left: 3px;
+	display:inline;
+	width: 29%;
+	font-family: Arial, verdana, tahoma , serif;
+	font-style: normal;
+	font-weight: 200;
+}
+
+.hostmap_slider_date {
+	color: green;
+	cursor: pointer;
+}
+
+div.hostMapParent {
+	padding:7px;
+	margin: 7px;
+	width: 97%;
+	float: left;
+	display:block;
+	box-shadow: 2px 2px 4px #202020;
+	    border-bottom-right-radius: 5px;
+    border-top-left-radius: 7px;
+}
+
+div.hostMapContainer {
+	height:340px;
+	width: 100%;
+	position: relative;
+}
+
+table.time-body-table {
+	max-width: 1200px;
+//	margin: 0 auto;
+	color: #0e0e0e;
+	background: #D2D5D5;
+	font-family: Arial, verdana, tahoma , serif;
+	font-size: 0.5em;
+	font-style: normal;
+	font-weight: 200;
+//	align:left;
+	width:25%;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 7px;
+}
+
+th.time-body-table {
+	font: 0.8em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+/*	letter-spacing: 2px;*/
+/*	text-transform: uppercase; */
+	text-align: left;
+	padding: 2px 2px 2px 4px;
+	background: #D2D5D5;
+}
+
+td.time-body-table {
+	font-size: 0.6em;
+}
+
+#hostMapContainer.hostMapContainer svg circle {
+	cursor: pointer;
+}
+
+.timeChart svg g {
+	cursor: pointer;
+}
+.time-body-table tr {
+	cursor: pointer;
+}
+
+tr.time-body-table  {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 2px 2px 2px 4px;
+	color: #4f6b72;
+}
+
+div.tooltip-popup {   
+  position: absolute;           
+  text-align: left;                            
+  padding: 2px;    
+/*  margin-left:1.5em;*/
+  font: 0.6em sans-serif;        
+  background: lightsteelblue;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}
+
+.hostMapTitle
+{
+	text-align: center;
+	font: bold 1em sans-serif;
+}
+
+.subGraphTitle
+{
+	text-align: center;
+	font: bold 0.8em sans-serif;
+}
+.timeTableTitle
+{
+	display: inline-block;
+	text-align: center;
+	font: bold 1em sans-serif;
+	width: 100%;
+}
+
+.timeChartTitle
+{
+	display: inline-block;
+	text-align: center;
+	font: bold 1em sans-serif;
+	width: 100%;
+}
+
+.killChainNumOuterDiv {
+  background: none repeat scroll 0 0 #FF0000;
+  border-radius: 50%;
+  position: absolute;
+  right: -7px;
+  top: -15px;
+  font-size: 1em;
+  color: lightgray;
+  width: 20px;
+  height: 20px;
+}
+
+.killChainNumInnerDiv
+{
+	position: relative;
+	margin:0px;
+	text-align: center;
+	text-indent:0;
+}
+
+.killChainHolder {
+  margin: 10px;
+  width: 75%;
+}
+
+.killChainIcon {
+  border: 2px solid #D3D3D3;
+  border-radius: 10px;
+  display: inline;
+  font: 0.7em bold;
+  margin-left: 4%;
+  margin-right: 4%;
+  padding: 3px 10px;
+  position:relative;
+}
+
+/*Hiding close button on a jQuery dialog box*/
+.dialog-no-close .ui-dialog-titlebar-close {display: none }
+
+.fdg_svg line.link {
+ /*stroke: #ccc;*/ /*This will be handled dynamically*/
+}
+
+/*.alarmsbar rect#solid { }
+.notifsbar rect#solid { }
+*/
+rect#solid {
+/*	stroke: #000000;*/
+	stroke-width: 0.05em;	
+}
+
+circle.hostbubble.highlighted { /*Dashboard host heat map bubble */
+	fill: #ffffff;
+}
+
+.fdg_svg circle.node {
+  fill: #000;
+  stroke: #fff;
+  stroke-width: 1.5px;
+  cursor: pointer;
+}
+
+.fdg_svg circle.node.fixed {
+  stroke: orange;
+  stroke-width: 3px;
+}
+
+.fdg_svg circle.node.highlighted {
+  stroke: gold;
+  stroke-width: 7px;
+}
+
+
+.cluster_svg .node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.cluster_svg .node.sourceHost circle {
+  fill: green;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.cluster_svg .node.targetHost circle {
+  fill: blue;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+.cluster_svg .node * {
+  font: 12px Helvetica, sans-serif;
+}
+
+.cluster_svg .node text.shadow {
+    stroke: lightgray;
+    stroke-width: 2.0px;
+    opacity: 0.9;
+}
+
+.cluster_svg .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+
+.cluster_svg g .node {
+	cursor: pointer
+}
+
+.datatable {
+	cellpadding: 0;
+	cellspacing: 0;
+}
+
+.datatable th {
+	font-size: 12px; 
+}
+
+.datatable th div.dataTables_sizing {
+    font-size: 12px;
+}
+
+.datatable td, .datatable td span {
+	font-size: 12px; 
+}
+
+.datatable.compact table.dataTable thead th, .datatable.compact table.dataTable thead td { /*Compact Datatable header */
+/*	padding: 10px 18px;*/
+	padding: 2px 4px;*/
+}
+
+.datatable.compact table.dataTable tbody th, .datatable.compact table.dataTable tbody td { /*Compact Datatable body */
+	/* padding: 8px 10px;*/
+	padding: 2px 4px;
+}
+
+.dataTables_length { 
+	font-size: 12px; 
+}
+
+.dataTables_info {
+	font-size: 12px; 
+}
+
+.dataTables_paginate {
+	font-size: 12px; 
+}
+
+.paginate_button {
+	font-size: 12px; 
+}
+
+.hostbubbleaxis-label {
+fill: #000000;
+}
+
+text.timegraphaxis-label { /*Dashboard Alarm/Notification Count vs Time bar graphs*/
+	font-size: 0.95em;
+}
+
+.smallHostdirectedGraph {
+	width: 675px;
+	height: 500px;
+	border: solid;
+	float: left;
+	margin-left:2em; 
+	margin-right:1em;
+	margin-bottom:1em;
+}
+
+.largeHostdirectedGraph {
+	width: 850px;
+	height: 500px;
+	border: solid;
+	float: left;
+	margin-left:2em; 
+	margin-right:1em;
+	margin-bottom:1em;
+}
+
+.geoInfoTable {
+	background-color: lightgray;
+}
+
+.geoInfoTable td {
+	font-size: 12px;
+}	
+.geoInfoTable td:first-child {
+	font-weight: bold;
+}
+
+.busyTableDiv { /*For putting the busy indicator */
+	height:auto;
+	min-height:30px;
+	height:auto !important;        /* for IE as it does not support min-height */
+	height:30px;                   /* for IE as it does not support min-height */	
+}
+
+/* These are for putting arrows on div borders. From: http://cssarrowplease.com/*/
+.arrow_box_right, .arrow_box_left, .arrow_box_top, .arrow_box_bottom { position: relative; background: #88b7d5; border: 4px solid #c2e1f5; } 
+.arrow_box_right:after, .arrow_box_right:before { left: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
+.arrow_box_right:after { border-color: rgba(136, 183, 213, 0); border-left-color: #000000; border-width: 8px; margin-top: -8px; } 
+.arrow_box_right:before { border-color: rgba(194, 225, 245, 0); border-left-color: #d3d3d3; border-width: 14px; margin-top: -14px; }
+.arrow_box_top:after, .arrow_box_top:before { bottom: 100%; left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
+.arrow_box_top:after { border-color: rgba(0, 0, 0, 0); border-bottom-color: #000000; border-width: 8px; margin-left: -8px; } 
+.arrow_box_top:before { border-color: rgba(211, 211, 211, 0); border-bottom-color: #d3d3d3; border-width: 14px; margin-left: -14px; }
+.arrow_box_bottom:after, .arrow_box_bottom:before { top: 100%; left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
+.arrow_box_bottom:after { border-color: rgba(0, 0, 0, 0); border-top-color: #000000; border-width: 8px; margin-left: -8px; } 
+.arrow_box_bottom:before { border-color: rgba(211, 211, 211, 0); border-top-color: #d3d3d3; border-width: 14px; margin-left: -14px; }
+.arrow_box_left:after, .arrow_box_left:before { right: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
+.arrow_box_left:after { border-color: rgba(0, 0, 0, 0); border-right-color: #000000; border-width: 8px; margin-top: -8px; } 
+.arrow_box_left:before { border-color: rgba(211, 211, 211, 0); border-right-color: #d3d3d3; border-width: 14px; margin-top: -14px; }
+
+img.state_icon {
+	vertical-align: middle;
+	height: 20px;
+	width: 20px;
+/*	padding-top: 0.20em;
+	padding-right: 0.20em;*/
+}
+
+div.disabled {
+   color: darkgrey;
+}
+
+img.disabled {
+	opacity: 0.4
+}
+.userProfileItemDiv {
+	clear: both;
+	margin-bottom: 0.75em;
+}
+.userProfileLabel {
+	width: 6em;
+	float: left;
+	text-align: right;
+	padding-right: 0.5em;
+}
+.txtProfileInputDiv {
+	float:left;
+}
+.userProfileData {
+	width: 20em;
+}
+
+.qtip-content {
+	/*font-size: 14px;*/	
+}
+
+/* Hide the jquery UI dialog title */
+.noDialogTitle .ui-dialog-titlebar { display:none; }
+/* Make the dialog background transparent */
+/*
+.noDialogTitle  {  border: none; background: transparent; }
+.noDialogTitle .ui-widget-content {  border: none; background: transparent; }
+.noDialogTitle .ui-widget-header { border: none; background: transparent; }
+*/
